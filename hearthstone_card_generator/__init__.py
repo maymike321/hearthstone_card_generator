@@ -1,2 +1,3 @@
 from .card_generator import CardGenerator
 from .card_information_database import CardInformationDatabase
+from .hearthstone_card import HearthstoneCard
