@@ -26,6 +26,7 @@ class CardInformationDatabase:
                 lookup(card, 'type'),
                 lookup(card, 'rarity'),
                 lookup(card, 'race'),
+                lookup(card, 'cardSet'),
                 lookup(cards, 'img'),
                 lookup(cards, 'imgGold')), cards))
         return self.__card_information

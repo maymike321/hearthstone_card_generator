@@ -14,12 +14,13 @@ class CardGeneratorTests(unittest.TestCase):
         self.cardType = 'cardType'
         self.rarity = 'rarity'
         self.race = 'race'
+        self.expansion = 'expansion'
         self.image = 'image'
         self.goldImage = 'goldImage'
-        self.hearthstoneCard = HearthstoneCard(self.name, self.description, self.manaCost, self.attack, self.health, self.durability, self.playerClass, self.cardType, self.rarity, self.race, self.image, self.goldImage)
+        self.hearthstoneCard = HearthstoneCard(self.name, self.description, self.manaCost, self.attack, self.health, self.durability, self.playerClass, self.cardType, self.rarity, self.race, self.expansion, self.image, self.goldImage)
     
     def test_generate_random_card_with_set_values_uses_those_values(self):
-        hearthstoneCard2 = HearthstoneCard('asdf', 'fdsa', 99, 102, 1000, 1020, 'madeup', 'nonsense', 'words', 'here', 'for', 'testing')
+        hearthstoneCard2 = HearthstoneCard('asdf', 'fdsa', 99, 102, 1000, 1020, 'madeup', 'nonsense', 'words', 'here', 'for', 'testing', 'properties')
         database = MockCardDatabase([self.hearthstoneCard, hearthstoneCard2])
         self.cardGenerator = CardGenerator(database)
         self.assertEqual(self.cardGenerator.generate_random_card(name=self.name).name, self.name)
@@ -31,6 +32,7 @@ class CardGeneratorTests(unittest.TestCase):
         self.assertEqual(self.cardGenerator.generate_random_card(cardType=self.cardType).cardType, self.cardType)
         self.assertEqual(self.cardGenerator.generate_random_card(rarity=self.rarity).rarity, self.rarity)
         self.assertEqual(self.cardGenerator.generate_random_card(race=self.race).race, self.race)
+        self.assertEqual(self.cardGenerator.generate_random_card(expansion=self.expansion).expansion, self.expansion)
         self.assertEqual(self.cardGenerator.generate_random_card(image=self.image).image, self.image)
         self.assertEqual(self.cardGenerator.generate_random_card(goldImage=self.goldImage).goldImage, self.goldImage)
 

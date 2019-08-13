@@ -1,5 +1,5 @@
 class HearthstoneCard:
-    def __init__(self, name, description, manaCost, attack, health, durability, playerClass, cardType, rarity, race, image, goldImage):
+    def __init__(self, name, description, manaCost, attack, health, durability, playerClass, cardType, rarity, race, expansion, image, goldImage):
         self.name = name
         self.description = description
         self.manaCost = manaCost
@@ -10,6 +10,7 @@ class HearthstoneCard:
         self.cardType = cardType
         self.rarity = rarity
         self.race = race
+        self.expansion = expansion
         self.image = image
         self.goldImage = goldImage
     def __eq__(self, other):
@@ -25,5 +26,6 @@ class HearthstoneCard:
                 self.cardType == other.cardType and\
                 self.rarity == other.rarity and\
                 self.race == other.race and\
+                self.expansion == other.expansion and\
                 self.image == other.image and\
                 self.goldImage == other.goldImage

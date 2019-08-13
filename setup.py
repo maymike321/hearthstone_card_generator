@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(name='hearthstone_card_generator',
-    version='1.0',
+    version='1.3',
     description='Generates completely random hearthstone cards (random mana cost, attack, health, name, and a description generated using markov chains from existing descriptions)',
     url='https://github.com/maymike321/hearthstone_card_generator',
     author='Michael May',

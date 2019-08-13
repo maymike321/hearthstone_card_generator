@@ -17,6 +17,7 @@ class CardGenerator:
         self.__load_card_types()
         self.__load_rarities()
         self.__load_races()
+        self.__load_expansions()
         self.__load_images()
         self.__load_gold_images()
 
@@ -42,17 +43,21 @@ class CardGenerator:
         races = unique(map(lambda card: card.race, self.__cards))
         self.__races = races
         self.__racesWeights = list(map(lambda race: sum(1 for card in self.__cards if card.race == race), races))
+    def __load_expansions(self):
+        expansions = unique(map(lambda card: card.expansion, self.__cards))
+        self.__expansions = expansions
+        self.__expansionsWeights = list(map(lambda expansion: sum(1 for card in self.__cards if card.expansion == expansion), expansions))
     def __load_images(self):
         self.__images = unique(map(lambda card: card.image, self.__cards))
     def __load_gold_images(self):
         self.__goldImages = unique(map(lambda card: card.goldImage, self.__cards))
 
-    def generate_random_card(self, name=None, description=None, manaCost=None, attack=None, health=None, durability=None, playerClass=None, cardType=None, rarity=None, race=None, image=None, goldImage=None):
-        cardType = cardType or random.choices(self.__cardTypes, weights=self.__cardTypesWeights)
+    def generate_random_card(self, name=None, description=None, manaCost=None, attack=None, health=None, durability=None, playerClass=None, cardType=None, rarity=None, race=None, expansion=None, image=None, goldImage=None):
+        cardType = cardType or random.choices(self.__cardTypes, weights=self.__cardTypesWeights)[0]
         attack = attack or (random.choice(range(13)) if cardType != 'Spell' else 0)
         health = health or (random.choice(range(1, 13)) if cardType == 'Minion' else 0)
         durability = durability or (random.choice(range(1, 13)) if cardType == 'Weapon' else 0)
-        race = race or (random.choices(self.__races, weights=self.__racesWeights) if cardType == 'Minion' else '')
+        race = race or (random.choices(self.__races, weights=self.__racesWeights)[0] if cardType == 'Minion' else '')
         return HearthstoneCard(
             name = name or random.choice(self.__names),
             description = description or self.__generate_description(),
@@ -60,12 +65,13 @@ class CardGenerator:
             attack = attack,
             health = health,
             durability = durability,
-            playerClass = playerClass or random.choices(self.__playerClasses, weights=self.__playerClassWeights),
+            playerClass = playerClass or random.choices(self.__playerClasses, weights=self.__playerClassWeights)[0],
             cardType = cardType,
-            rarity = rarity or random.choices(self.__rarities, weights=self.__raritiesWeights),
+            rarity = rarity or random.choices(self.__rarities, weights=self.__raritiesWeights)[0],
             race = race,
-            image = image or random.choices(self.__images),
-            goldImage = goldImage or random.choices(self.__goldImages))
+            expansion = expansion or random.choices(self.__expansions, weights=self.__expansionsWeights)[0],
+            image = image or random.choice(self.__images),
+            goldImage = goldImage or random.choice(self.__goldImages))
 
     def __generate_description(self):
         description = ''
