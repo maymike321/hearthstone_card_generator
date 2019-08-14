@@ -19,7 +19,7 @@ class CardInformationDatabase:
                 lookup(card, 'name'),
                 lookup(card, 'text'),
                 lookup(card, 'cost'),
-                lookup(card, 'attack'),
+                lookup(card, 'attack') or (0 if lookup(card, 'type') == 'Minion' else ''),
                 lookup(card, 'health'),
                 lookup(card, 'durability'),
                 lookup(card, 'playerClass'),
