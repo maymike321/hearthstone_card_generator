@@ -17,7 +17,7 @@ utherHeroCard = cardGenerator.get_card_information('uther of the ebon blade') #G
 ## HearthstoneCard
 Represents information about a particular card.
 
-Has the following fields:  ```name, description, manaCost, attack, health, durability, playerClass, cardType, rarity, race, image, goldImage```
+Has the following fields:  ```name, description, manaCost, attack, health, durability, playerClass, cardType, rarity, race, expansion, image, goldImage```
 
 ## CardInformationDatabase
 Has one method, ```get_card_information```, which pulls all collectible cards from https://rapidapi.com/omgvamp/api/hearthstone when first called, then stores that information for repeated calls.
@@ -31,6 +31,6 @@ Optionally takes in a descriptionClarity (number between 1 and 5 that rates how 
 
 Has two methods:
 
-```generate_random_card``` generates a random card.  Each of ```name, description, manaCost, attack, health, durability, playerClass, cardType, rarity, race, image, goldImage``` can be passed in as optional parameters to fix that value for the random card.
+```generate_random_card``` generates a random card.  Each of ```name, description, manaCost, attack, health, durability, playerClass, cardType, rarity, race, expansion, image, goldImage``` can be passed in as optional parameters to fix that value for the random card.
 
 ```get_card_information``` takes in a card name and returns card information for that card.
